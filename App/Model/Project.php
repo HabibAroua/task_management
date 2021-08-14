@@ -75,6 +75,58 @@
 			$this->price = addslashes($price);
 		}
 		
+		//add
+		public function add()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
+		//update
+		public function add()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
+		//delete
+		public function add()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
+		//getAll
+		public function add()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
 		//toString()
 		public function toString()
 		{

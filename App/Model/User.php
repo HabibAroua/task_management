@@ -1,4 +1,5 @@
 <?php
+
 	class User
 	{
 		private $id;
@@ -109,13 +110,65 @@
 			$this->role = addslashes($role);
 		}
 		
+		//add
+		public function add()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
+		//update
+		public function update()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
+		//delete
+		public function delete()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
+		//getAll
+		public function getAll()
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
 		//toString()
 		public function toString()
 		{
 			$tab = array();
 			if($this->role == 1)
 			{
-				$tab = array
+				$tab = 	array
 						(
 							[
 								'id' => $this->id ,
