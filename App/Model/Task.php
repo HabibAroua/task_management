@@ -17,7 +17,7 @@
 		
 		public function setId($id)
 		{
-			$this->id = $id;
+			$this->id = addslashes($id);
 		}
 		
 		//title;
@@ -28,7 +28,7 @@
 		
 		public function setTitle($title)
 		{
-			$this->title = $title;
+			$this->title = addslashes($title);
 		}
 		
 		//description;
@@ -39,7 +39,7 @@
 		
 		public function setDescription($description)
 		{
-			$this->description = $description;
+			$this->description = addslashes($description);
 		}
 		
 		//end_date;
@@ -50,7 +50,7 @@
 		
 		public function setEnd_date($end_date)
 		{
-			$this->end_date = $end_date;
+			$this->end_date = addslashes($end_date);
 		}
 		
 		//status;
@@ -61,7 +61,7 @@
 		
 		public function setStatus($status)
 		{
-			$this->status = $status;
+			$this->status = addslashes($status);
 		}
 		
 		//the_user_id;
@@ -72,7 +72,7 @@
 		
 		public function setThe_user_id($the_user_id)
 		{
-			$this->the_user_id = $the_user_id;
+			$this->the_user_id = addslashes($the_user_id);
 		}
 		
 		//project_id;
@@ -83,7 +83,7 @@
 		
 		public function setProject_id($project_id)
 		{
-			$this->project_id = $project_id;
+			$this->project_id = addslashes($project_id);
 		}
 		
 		//toString()

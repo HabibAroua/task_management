@@ -17,7 +17,7 @@
 		
 		public function setId($id)
 		{
-			$this->id = $id;
+			$this->id = addslashes($id);
 		}
 		
 		//project_name
@@ -28,7 +28,7 @@
 		
 		public function setProject_name($project_name)
 		{
-			$this->project_name = $project_name;
+			$this->project_name = addslashes($project_name);
 		}
 		
 		//description
@@ -39,7 +39,7 @@
 		
 		public function setDescription($description)
 		{
-			$this->description = $description;
+			$this->description = addslashes($description);
 		}
 		
 		//start_date
@@ -50,7 +50,7 @@
 		
 		public function setStart_date($start_date)
 		{
-			$this->start_date = $start_date;
+			$this->start_date = addslashes($start_date);
 		}
 		
 		//end_date
@@ -61,7 +61,7 @@
 		
 		public function setEnd_date($end_date)
 		{
-			$this->end_date = $end_date;
+			$this->end_date = addslashes($end_date);
 		}
 		
 		//price
@@ -72,7 +72,7 @@
 		
 		public function setPrice($price)
 		{
-			$this->price = $price;
+			$this->price = addslashes($price);
 		}
 		
 		//toString()

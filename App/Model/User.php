@@ -19,7 +19,7 @@
 		
 		public function setId($id)
 		{
-			$this->id = $id;
+			$this->id = addslashes($id);
 		}
 	
 		//first_name
@@ -30,7 +30,7 @@
 		
 		public function setFirst_name($first_name)
 		{
-			$this->first_name = $first_name;
+			$this->first_name = addslashes($first_name);
 		}
 		
 		//last_name
@@ -41,7 +41,7 @@
 		
 		public function setLast_name($last_name)
 		{
-			$this->last_name = $last_name;
+			$this->last_name = addslashes($last_name);
 		}
 		
 		//email
@@ -52,7 +52,7 @@
 		
 		public function setEmail($email)
 		{
-			$this->email = $email;
+			$this->email = addslashes($email);
 		}
 		
 		//login
@@ -63,7 +63,7 @@
 		
 		public function setLogin($login)
 		{
-			$this->login = $login;
+			$this->login = addslashes($login);
 		}
 		
 		//photo
@@ -74,13 +74,13 @@
 		
 		public function setPhoto($photo)
 		{
-			$this->photo = $photo;
+			$this->photo = addslashes($photo);
 		}
 		
 		//password
 		public function setPassword($password)
 		{
-			$this->password = $password;
+			$this->password = md5($password);
 		}
 		
 		public function getPassword()
@@ -96,7 +96,7 @@
 		
 		public function setCin($cin)
 		{
-			$this->cin = $cin;
+			$this->cin = addslashes($cin);
 		}
 		//role
 		public function getRole()
@@ -106,7 +106,7 @@
 		
 		public function setRole($role)
 		{
-			$this->role = $role;
+			$this->role = addslashes($role);
 		}
 		
 		//toString()
