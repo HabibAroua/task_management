@@ -115,11 +115,45 @@
 		{
 			try
 			{
-				
+				global $connection;
+				$req = $connection->con->exec
+						(
+							"INSERT INTO `The_user`
+							(
+								`first_name`,
+								`last_name`,
+								`email`,
+								`login`,
+								`photo`,
+								`password`,
+								`cin`,
+								`role`
+							)
+							VALUES
+							(
+								'$this->first_name',
+								'$this->last_name',
+								'$this->email',
+								'$this->login',
+								'$this->photo',
+								'$this->password',
+								'$this->cin',
+								'$this->role'
+							)"
+						);
+				if($req != 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
@@ -128,16 +162,95 @@
 		{
 			try
 			{
-				
+				global $connection;
+				$req=$connection->con->exec
+							(
+								"UPDATE `The_user`SET
+								`first_name`='$this->first_name',
+								`last_name`='$this->last_name',
+								`email`='$this->email',
+								`login`='$this->login',
+								`cin`='$this->cin'
+								WHERE id = $this->id"
+							 );
+				if($req != 0 )
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
 		//delete
 		public function delete()
+		{
+			try
+			{
+				global $connection;
+				$req = $connection->con->exec
+						(
+							"DELETE FROM The_user where id=".$this->id.";"
+						);
+				if($req != 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return false;
+			}
+		}
+		
+		//getAll
+		public function getAll()
+		{
+			try
+			{
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'first_name' => $tab[1],
+                        'last_name' => $tab[2],
+                        'email'=> $tab[3],
+                        'login'=> $tab[4],
+                        'photo' => $tab[5],
+						'password' => $tab[6],
+						'cin' => $tab[7],
+						'role' => $tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return null;
+			}
+		}
+		
+		//findById
+		public function findById($id)
 		{
 			try
 			{
@@ -149,8 +262,21 @@
 			}
 		}
 		
-		//getAll
-		public function getAll()
+		//findByLogin
+		public function findByLogin($login)
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
+			}
+		}
+		
+		//findByEmail
+		public function findByEmail($email)
 		{
 			try
 			{
