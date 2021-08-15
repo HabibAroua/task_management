@@ -80,50 +80,161 @@
 		{
 			try
 			{
-				
+				global $connection;
+				$req = $connection->con->exec
+						(
+							"INSERT INTO `Project`
+							(
+								`project_name`,
+								`description`,
+								`start_date`,
+								`end_date`,
+								`price`
+							)
+							VALUES
+							(
+								'$this->project_name',
+								'$this->description',
+								'$this->start_date',
+								'$this->end_date',
+								'$this->price'
+							)"
+						);
+				if($req != 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
 		//update
-		public function add()
+		public function update()
 		{
 			try
 			{
-				
+				global $connection;
+				$req=$connection->con->exec
+							(
+								"UPDATE `Project`SET
+								`project_name`='$this->project_name',
+								`description`='$this->description',
+								`start_date`='$this->start_date',
+								`end_date`='$this->end_date',
+								`price`='$this->price'
+								WHERE id = $this->id"
+							 );
+				if($req != 0 )
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
 		//delete
-		public function add()
+		public function delete()
 		{
 			try
 			{
-				
+				global $connection;
+				$req = $connection->con->exec
+						(
+							"DELETE FROM Project where id=".$this->id.";"
+						);
+				if($req != 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
 		//getAll
-		public function add()
+		public function getAll()
 		{
 			try
 			{
-				
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from Project");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'project_name' => $tab[1],
+                        'description' => $tab[2],
+                        'start_date'=> $tab[3],
+                        'end_date'=> $tab[4],
+                        'price' => $tab[5]
+                    );
+                    $i++;
+                }
+                return $T;
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return null;
+			}
+		}
+		
+		//findById()
+		public function findById($id)
+		{
+			try
+			{
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from Project where id = $id");
+				$tab = $res->fetch(PDO::FETCH_NUM);
+				$this->id = $tab[0];
+				$this->project_name = $tab[1];
+				$this->description = $tab[2];
+				$this->start_date = $tab[3];
+				$this->end_date = $tab[4];
+				$this->price = $tab[5];
+				return array
+						(
+							'id' => $this->id,
+							'project_name' => $this->project_name,
+							'description' => $this->description,
+							'start_date' => $this->start_date,
+							'end_date' => $this->end_date,
+							'price' => $this->price
+						);
+				//return $res->fetch(PDO::FETCH_NUM)[0];
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return null;
 			}
 		}
 		
