@@ -249,6 +249,142 @@
 			}
 		}
 		
+		//getAllAdmins
+		public function getAllAdmins()
+		{
+			try
+			{
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user where role = 1 AND role role= 2");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'first_name' => $tab[1],
+                        'last_name' => $tab[2],
+                        'email'=> $tab[3],
+                        'login'=> $tab[4],
+                        'photo' => $tab[5],
+						'password' => $tab[6],
+						'cin' => $tab[7],
+						'role' => $tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return null;
+			}
+		}
+		
+		//getAllSuperAdmin
+		public function getAllSuperAdmin()
+		{
+			try
+			{
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user where role = 1");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'first_name' => $tab[1],
+                        'last_name' => $tab[2],
+                        'email'=> $tab[3],
+                        'login'=> $tab[4],
+                        'photo' => $tab[5],
+						'password' => $tab[6],
+						'cin' => $tab[7],
+						'role' => $tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return null;
+			}
+		}
+		
+		//getAllAdmin
+		public function getAllAdmin()
+		{
+			try
+			{
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user where role = 2");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'first_name' => $tab[1],
+                        'last_name' => $tab[2],
+                        'email'=> $tab[3],
+                        'login'=> $tab[4],
+                        'photo' => $tab[5],
+						'password' => $tab[6],
+						'cin' => $tab[7],
+						'role' => $tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return null;
+			}
+		}
+		
+		//getAllPersonal
+		public function getAllPersonal()
+		{
+			try
+			{
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user where role = 3");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'first_name' => $tab[1],
+                        'last_name' => $tab[2],
+                        'email'=> $tab[3],
+                        'login'=> $tab[4],
+                        'photo' => $tab[5],
+						'password' => $tab[6],
+						'cin' => $tab[7],
+						'role' => $tab[8]
+                    );
+                    $i++;
+                }
+                return $T;
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return null;
+			}
+		}
+		
 		//findById
 		public function findById($id)
 		{
@@ -360,6 +496,19 @@
 			{
 				echo "Error : ".$e;
 				return null;
+			}
+		}
+		
+		//updatePassword
+		public function updatePassword($newPassword)
+		{
+			try
+			{
+				
+			}
+			catch(Exception $e)
+			{
+				
 			}
 		}
 		
