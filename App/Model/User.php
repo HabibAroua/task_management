@@ -254,11 +254,36 @@
 		{
 			try
 			{
-				
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user where id = $id");
+				$tab = $res->fetch(PDO::FETCH_NUM);
+				$this->id = $tab[0] ;
+				$this->first_name = $tab[1];
+				$this->last_name = $tab[2];
+				$this->email = $tab[3];
+				$this->login = $tab[4];
+				$this->photo = $tab[5];
+				$this->password = $tab[6];
+				$this->cin = $tab[7];
+				$this->role = $tab[8];
+				return array
+						(
+							'id' => $this->id,
+							'first_name' => $this->first_name,
+							'last_name' => $this->last_name,
+							'email' => $this->email,
+							'login' => $this->login,
+							'photo' => $this->photo,
+							'password' => $this->password,
+							'cin' => $this->cin ,
+							'role' => $this->role
+						);
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return null;
 			}
 		}
 		
@@ -267,11 +292,36 @@
 		{
 			try
 			{
-				
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user where login = $login");
+				$tab = $res->fetch(PDO::FETCH_NUM);
+				$this->id = $tab[0] ;
+				$this->first_name = $tab[1];
+				$this->last_name = $tab[2];
+				$this->email = $tab[3];
+				$this->login = $tab[4];
+				$this->photo = $tab[5];
+				$this->password = $tab[6];
+				$this->cin = $tab[7];
+				$this->role = $tab[8];
+				return array
+						(
+							'id' => $this->id,
+							'first_name' => $this->first_name,
+							'last_name' => $this->last_name,
+							'email' => $this->email,
+							'login' => $this->login,
+							'photo' => $this->photo,
+							'password' => $this->password,
+							'cin' => $this->cin ,
+							'role' => $this->role
+						);
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return null;
 			}
 		}
 		
@@ -280,11 +330,36 @@
 		{
 			try
 			{
-				
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from The_user where email = $email");
+				$tab = $res->fetch(PDO::FETCH_NUM);
+				$this->id = $tab[0] ;
+				$this->first_name = $tab[1];
+				$this->last_name = $tab[2];
+				$this->email = $tab[3];
+				$this->login = $tab[4];
+				$this->photo = $tab[5];
+				$this->password = $tab[6];
+				$this->cin = $tab[7];
+				$this->role = $tab[8];
+				return array
+						(
+							'id' => $this->id,
+							'first_name' => $this->first_name,
+							'last_name' => $this->last_name,
+							'email' => $this->email,
+							'login' => $this->login,
+							'photo' => $this->photo,
+							'password' => $this->password,
+							'cin' => $this->cin ,
+							'role' => $this->role
+						);
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return null;
 			}
 		}
 		
