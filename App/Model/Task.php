@@ -91,11 +91,41 @@
 		{
 			try
 			{
-				
+				global $connection;
+				$req = $connection->con->exec
+						(
+							"INSERT INTO `Task`
+							(
+								`title`,
+								`description`,
+								`end_date`,
+								`status`,
+								`the_user_id`,
+								`project_id`
+							)
+							VALUES
+							(
+								'$this->title',
+								'$this->description',
+								'$this->end_date',
+								'$this->status',
+								'$this->the_user_id',
+								'$this->project_id'
+							)"
+						);
+				if($req != 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
@@ -104,11 +134,31 @@
 		{
 			try
 			{
-				
+				global $connection;
+				$req=$connection->con->exec
+							(
+								"UPDATE `Task`SET
+								`title` = '$this->title',
+								`description` = '$this->description',
+								`end_date` = '$this->end_date',
+								`status` = '$this->status',
+								`the_user_id` = '$this->the_user_id',
+								`project_id` = '$this->project_id'
+								where id = $this->id"
+							 );
+				if($req != 0 )
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
@@ -117,11 +167,24 @@
 		{
 			try
 			{
-				
+				global $connection;
+				$req = $connection->con->exec
+						(
+							"DELETE FROM Task where id=".$this->id.";"
+						);
+				if($req != 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return false;
 			}
 		}
 		
@@ -130,11 +193,30 @@
 		{
 			try
 			{
-				
+				global $connection;
+                $T = array();
+                $res = $connection->con->query("SELECT * from Task");
+                $i = 0;
+                while($tab=$res->fetch(PDO::FETCH_NUM))
+                {
+                    $T[$i] = $Array = array
+                    (
+                        'id'=> $tab[0],
+                        'title' => $tab[1],
+                        'description' => $tab[2],
+                        'end_date'=> $tab[3],
+                        'status'=> $tab[4],
+						'the_user_id' => $tab[5],
+                        'project_id' => $tab[6]
+                    );
+                    $i++;
+                }
+                return $T;
 			}
 			catch(Exception $e)
 			{
-				
+				echo "Error : ".$e;
+				return null;
 			}
 		}
 		
