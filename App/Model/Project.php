@@ -238,6 +238,20 @@
 			}
 		}
 		
+		//
+		private function percent_calcul($total, $nb)
+		{
+			try
+			{
+				return ($nb/$total) * 100;
+			}
+			catch(Exception $e)
+			{
+				echo "Error : ".$e;
+				return -1;
+			}
+		}
+		
 		//toString()
 		public function toString()
 		{

@@ -3,5 +3,5 @@
 	require_once('../../../Model/User.php');
 	
 	$user = new User();
-	echo json_encode($user->getAll());
+	echo json_encode($user->getAllPersonal());
 ?>
