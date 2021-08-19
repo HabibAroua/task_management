@@ -39,7 +39,7 @@
 					</span>
 				</div>
 
-				<form class="login100-form validate-form"  method="POST" action="controller/AuthAdmin.php">
+				<form class="login100-form validate-form"  method="POST" action="../App/controller/User/auth.php">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
 						<input class="input100" type="text" name="login" placeholder="Enter username">

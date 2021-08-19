@@ -1,10 +1,10 @@
 <?php
-session_start();
-if ((!isset($_SESSION['login'])) || !isset($_SESSION['password']))
-{
-        header("location: login.php");
-}
-
+        session_start();
+        if (!isset($_SESSION['user']))
+        {
+                header("location: login.php");
+        }
+        $root = "/Personel_manengment/App/controller";
 ?>
 <head>
         <meta charset="utf-8" />
