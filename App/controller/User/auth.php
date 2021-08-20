@@ -15,14 +15,28 @@
 				$user = json_decode($_SESSION['user']);
 				if(md5($_POST['password']) == $user->password )
 				{
-					echo json_encode
+					if($user->role == 3)
+					{
+						echo json_encode
+							(
+								array
+								(
+									"response" => "You are not an admin",
+									"code" => 0
+								)
+							);
+					}
+					else
+					{
+						echo json_encode
 						(
 							array
 							(
 								"response" => "Good",
 								"code" => 1
 							)
-						);
+						);	
+					}
 				}
 				else
 				{
@@ -47,7 +61,28 @@
 					$user = json_decode($_SESSION['user']);
 					if(md5($_POST['password']) == $user->password )
 					{
-						header("location: ../../../Admin/index.php");
+						if($user->role == 3)
+						{
+							echo json_encode
+							(
+								array
+								(
+									"response" => "You are not an admin",
+									"code" => 0
+								)
+							);
+						}
+						else
+						{
+							echo json_encode
+							(
+								array
+								(
+									"response" => "Good",
+									"code" => 1
+								)
+							);	
+						}
 					}
 					else
 					{
