@@ -1,6 +1,6 @@
 <?php
 	$content =  file_get_contents("http://localhost/Personel_manengment/App/controller/Project/getAll.php");
-	$users = json_decode($content);
+	$users = json_decode($content); //on a converti le contenu json vers un tableau associaive
  ?>
 <div class="content-page">
     <div class="content">

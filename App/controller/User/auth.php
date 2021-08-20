@@ -15,13 +15,28 @@
 				$user = json_decode($_SESSION['user']);
 				if(md5($_POST['password']) == $user->password )
 				{
-					header("location: ../../../Admin/index.php");
+					echo json_encode
+						(
+							array
+							(
+								"response" => "Good",
+								"code" => 1
+							)
+						);
 				}
 				else
 				{
 					session_unset ();
 					session_destroy ();
-					echo "Please verif your password";
+					echo json_encode
+						(
+							array
+							(
+								"response" => "Please verif your password",
+								"code" => 0
+							)
+						);
+					//echo "Please verif your password";
 				}
 			}
 			else
@@ -38,23 +53,53 @@
 					{
 						session_unset ();
 						session_destroy ();
-						echo "Please verif your password";
+						echo json_encode
+						(
+							array
+							(
+								"response" => "Please verif your password",
+								"code" => 0
+							)
+						);
+						//echo "Please verif your password";
 					}
 				}
 				else
 				{
-					echo "bad1";
+					echo json_encode
+						(
+							array
+							(
+								"response" => "This user is not found",
+								"code" => 0
+							)
+						);
 				}
 			}
 		}
 		else
 		{
-			echo "User is not found";
+			echo json_encode
+						(
+							array
+							(
+								"response" => "This user is not found",
+								"code" => 0
+							)
+						);
 		}
 	}
 	else
 	{
-		echo "There are 2 parameter";
+		echo json_encode
+						(
+							array
+							(
+								"response" => "There are 2 parameter",
+								"code" => 0
+							)
+						);
+		//echo "There are 2 parameter";
 	}
 	//echo json_encode($user->findById(1));
 	//echo json_encode($user->findByEmail('habib.aroua@hotmail.fr'));

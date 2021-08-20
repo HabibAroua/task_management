@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,6 +25,9 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.js"></script>
 <!--===============================================================================================-->
 </head>
 <body>
@@ -42,13 +44,13 @@
 				<form class="login100-form validate-form"  method="POST" action="../App/controller/User/auth.php">
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="login" placeholder="Enter username">
+						<input class="input100" type="text" name="login" id="login" placeholder="Enter username">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="password" placeholder="Enter password">
+						<input class="input100" type="password" name="password" id="password" placeholder="Enter password">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -99,11 +101,49 @@
   <script src="js/hoverable-collapse.js"></script>
   <script src="js/template.js"></script>
   <script src="js/todolist.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/css/alertify.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.13.1/alertify.js"></script>
-
-  
+	<script>
+		$(document).ready
+		(
+			function()
+			{
+				$("#btLogin").click
+				(
+					function(e)
+					{
+						var login = $('#login').val();
+						var password = $('#password').val();
+						$.ajax
+                (
+                    {
+                        async: false, //if you want to change a global variable you should add this instruction
+                        type: 'POST',
+                        url: "../App/controller/User/auth.php",
+                        data:
+                        {
+                            'login' : login,
+														'password' : password
+                        },
+                        success: 
+                        function(result)
+                        {
+														json = JSON.parse(result);
+														if(json.code == 0)
+														{
+															alertify.error(json.response);
+															e.preventDefault();
+														}
+														else
+														{
+															location.href = "index.php";
+														}
+                        }
+                    }
+                );	
+					}
+				);
+			}
+		);
+	</script>
   <!-- endinject -->
 </body>
 </html>

@@ -243,7 +243,7 @@
 		{
 			try
 			{
-				return ($nb/$total) * 100;
+				return ($nb/$total) * 100; //ken fama exception wa9tili $total = 0
 			}
 			catch(Exception $e)
 			{
