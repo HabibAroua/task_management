@@ -33,10 +33,12 @@
 											echo "<td>".$v->price."</td>";
 											echo "<td>";
 												echo "<center>";
-													echo "<a href='#'class='ti-trash'> </a>";
+												$id = $v->id;
+													echo "<a onclick='destroy($id)' href='#'class='ti-trash'> </a>";
 												echo "</center>";
 												echo "<center>";
-													echo "<a href='#' class='ti-pencil-alt'> </a>";
+													$id= $v->id;
+													echo "<a  href='updateProject.php?id=$id' class='ti-pencil-alt'> </a>";
 												echo "</center>";
 											echo "</td>";
 										echo "</tr>";
@@ -67,3 +69,48 @@
 <script src="assets/libs/pdfmake/vfs_fonts.js"></script>
 <script src="assets/js/pages/datatables.init.js"></script>
 <script src="assets/js/app.min.js"></script>
+<script>
+    function destroy(id)
+    {
+        alertify.confirm
+        (
+            "Do you want to delete this project ?.",
+            function()
+            {
+                $.ajax
+                (
+                    {
+                        async: false, //if you want to change a global variable you should add this instruction
+                        type: 'POST',
+                        url: "../App/controller/Project/delete.php",
+                        data:
+                        {
+                            'id' : id
+                        },
+                        success: 
+                        function(result)
+                        {
+																										alert(result);
+                            json = JSON.parse(result);
+																												if(json.code == 0)
+																												{
+																													alertify.error(json.response);
+																													e.preventDefault();
+																												}
+																												else
+																												{
+																													alertify.success(json.response);
+																													e.preventDefault();
+																												}
+                        }
+                    }
+                );
+            },
+            function()
+            {
+                alertify.error('You cancelled the deleting');
+            }
+        );
+								//location.href = "ListProject.php";
+    }
+</script>

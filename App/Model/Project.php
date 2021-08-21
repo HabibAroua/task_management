@@ -214,21 +214,28 @@
                 $T = array();
                 $res = $connection->con->query("SELECT * from Project where id = $id");
 				$tab = $res->fetch(PDO::FETCH_NUM);
-				$this->id = $tab[0];
-				$this->project_name = $tab[1];
-				$this->description = $tab[2];
-				$this->start_date = $tab[3];
-				$this->end_date = $tab[4];
-				$this->price = $tab[5];
-				return array
-						(
-							'id' => $this->id,
-							'project_name' => $this->project_name,
-							'description' => $this->description,
-							'start_date' => $this->start_date,
-							'end_date' => $this->end_date,
-							'price' => $this->price
-						);
+				if($tab != null)
+				{
+					$this->id = $tab[0];
+					$this->project_name = $tab[1];
+					$this->description = $tab[2];
+					$this->start_date = $tab[3];
+					$this->end_date = $tab[4];
+					$this->price = $tab[5];
+					return array
+							(
+								'id' => $this->id,
+								'project_name' => $this->project_name,
+								'description' => $this->description,
+								'start_date' => $this->start_date,
+								'end_date' => $this->end_date,
+								'price' => $this->price
+							);	
+				}
+				else
+				{
+					return null;
+				}
 				//return $res->fetch(PDO::FETCH_NUM)[0];
 			}
 			catch(Exception $e)

@@ -1,3 +1,12 @@
+<?php
+	$id = 0;
+	if(isset($_GET['id']))
+	{
+		$id = $_GET['id'];
+	}
+	$content =  file_get_contents("http://localhost/Personel_manengment/App/controller/Project/findById.php?id=$id");
+	$project = json_decode($content); //on a converti le contenu json vers un tableau associaive
+?>
 <div class="content-page">
 	<div class="content">
 		<div class="container-fluid">
@@ -17,30 +26,31 @@
 						</div>
 						<h4 class="header-title mt-0 mb-3">Add New Project</h4>
                         <form method="post" action="../App/controller/ajoutProjet.php" >
+							<input type="text" id="id" name="id" value="<?php echo $project->id ?>" hidden />
                             <div class="form-group">
 								<label for="project_name">Project_name</label>
-                                <input type="text" name="project_name" parsley-trigger="change" required
+                                <input type="text" name="project_name" value="<?php echo $project->project_name ?>" parsley-trigger="change" required
                                     placeholder="Enter project name" class="form-control" id="project_name" />
                             </div>
 							<div class="form-group">
                                 <label for="description">Description</label>
 								<textarea name="Description" parsley-trigger="change" required
-                                    placeholder="Enter Description" class="form-control" id="description"></textarea>
+                                    placeholder="Enter Description" class="form-control" id="description"><?php echo $project->description ?></textarea>
                             </div>
 							<div class="form-group">
                                 <label for="start_date">Start date</label>
-                                <input type="date" name="date_deb" parsley-trigger="change" required
+                                <input type="date" value="<?php echo $project->start_date ?>" name="date_deb" parsley-trigger="change" required
                                     placeholder="Enter the start date" class="form-control" id="start_date" />
                             </div>
 							<div class="form-group">
                                 <label for="end_date">End date</label>
-                                <input type="date" name="date_fin" parsley-trigger="change" required
+                                <input type="date" name="end_date" value="<?php echo $project->end_date ?>" parsley-trigger="change" required
                                     placeholder="Enter the end date" class="form-control" id="end_date" />
                             </div>
 							<div class="form-group">
                                 <label for="price"> Price </label>
                                 <input data-parsley-equalto="#prix" type="number" required
-                                    placeholder="Enter the price" class="form-control" min="100" id="price" name="preice" />
+                                    placeholder="Enter the price" value="<?php echo $project->price ?>" class="form-control" min="100" id="price" name="price" />
                             </div>
 							<div class="form-group text-right mb-0">
                                 <button class="btn btn-primary waves-effect waves-light mr-1" id="btSubmit" type="submit">
@@ -63,16 +73,17 @@
 <script src="assets/js/pages/dashboard.init.js"></script>
 <script src="assets/js/app.min.js"></script>
 <script>
-	function addProject(project_name,description,start_date,end_date,price)
+	function updateProject(id,project_name,description,start_date,end_date,price)
 	{
 		$.ajax
                 (
                     {
                         async: false, //if you want to change a global variable you should add this instruction
                         type: 'POST',
-                        url: "../App/controller/Project/add.php",
+                        url: "../App/controller/Project/update.php",
                         data:
                         {
+							'id' : id,
                             'project_name' : project_name,
 							'description' : description,
 							'start_date' : start_date,
@@ -105,6 +116,7 @@
 				(
 					function(e)
 					{
+						var id = $('#id').val();
 						var project_name = $('#project_name').val();
 						var description = $('#description').val();
 						var start_date = $('#start_date').val();
@@ -158,8 +170,9 @@
 											}
 											else
 											{
-												addProject(project_name,description,start_date,end_date,price);
+												updateProject(id,project_name,description,start_date,end_date,price);
 												e.preventDefault();
+												location.href = "ListProject.php";
 											}
 										}
 									}

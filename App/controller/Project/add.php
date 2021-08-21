@@ -2,10 +2,10 @@
 	require_once('../../Connection/Connection.php');
 	require_once('../../Model/Project.php');
 	if((isset($_POST['project_name'])) AND (isset($_POST['description'])) AND (isset($_POST['start_date'])) AND
-		(isset($_POST['end_date'])) AND (isset($_POST['end_date'])))
+		(isset($_POST['end_date'])) AND (isset($_POST['price'])))
 	{
 		if((!empty($_POST['project_name'])) AND (!empty($_POST['description'])) AND (!empty($_POST['start_date'])) AND
-		(!empty($_POST['end_date'])) AND (!empty($_POST['end_date'])))
+		(!empty($_POST['end_date'])) AND (!empty($_POST['price'])))
 		{
 			$project = new Project();
 			$project->setProject_name($_POST['project_name']);
@@ -15,20 +15,48 @@
 			$project->setPrice($_POST['price']);
 			if($project->add())
 			{
-				echo "Good";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "The insertion of new project has been successful",
+									"code" => 1
+								)
+							);
 			}
 			else
 			{
-				echo "Bad";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "There is an error of insertion",
+									"code" => 0
+								)
+							);
 			}
 		}
 		else
 		{
-			echo " Error : There is one or many empty fields";
+			echo json_encode
+							(
+								array
+								(
+									"response" => "There is one or many empty fields",
+									"code" => 0
+								)
+							);
 		}
 	}
 	else
 	{
-		echo "Error : You should enter 5 parameter";
+		echo json_encode
+						(
+							array
+							(
+								"response" => "You should enter 5 parameter",
+								"code" => 0
+							)
+						);
 	}
 ?>

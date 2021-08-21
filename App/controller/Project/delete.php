@@ -9,20 +9,48 @@
 			$project->setId($_POST['id']);
 			if($project->delete())
 			{
-				echo "Good";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "The deleting of this project has been successful",
+									"code" => 1
+								)
+							);
 			}
 			else
 			{
-				echo "Bad";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "There is an error of deleting",
+									"code" => 0
+								)
+							);
 			}
 		}
 		else
 		{
-			echo "Error : The parameter is empty";
+			echo json_encode
+							(
+								array
+								(
+									"response" => "The parameter is empty",
+									"code" => 0
+								)
+							);
 		}
 	}
 	else
 	{
-		echo "Error : You should enter a parameter";
+		echo json_encode
+							(
+								array
+								(
+									"response" => "You should enter a parameter",
+									"code" => 0
+								)
+							);
 	}
 ?>
