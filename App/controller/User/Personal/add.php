@@ -20,20 +20,48 @@
 			$user->setRole($_POST['role']);
 			if($user->add())
 			{
-				echo "Good";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "The insertion of new personal has been successful",
+									"code" => 1
+								)
+							);
 			}
 			else
 			{
-				echo "Bad";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "There is an error of insertion",
+									"code" => 0
+								)
+							);
 			}
 		}
 		else
 		{
-			echo "Error : There is one or many empty paramater";
+			echo json_encode
+							(
+								array
+								(
+									"response" => "There is one or many empty paramater",
+									"code" => 0
+								)
+							);
 		}
 	}
 	else
 	{
-		echo "Error : There are 7 parameter";
+		echo json_encode
+							(
+								array
+								(
+									"response" => "There are 7 parameter",
+									"code" => 0
+								)
+							);
 	}
 ?>

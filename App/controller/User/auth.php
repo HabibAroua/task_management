@@ -11,7 +11,7 @@
 		{
 			if($user->findByEmail($_POST['login']) != null)
 			{
-				$_SESSION['user'] = json_encode($user->findByEmail($_POST['login']));
+				$_SESSION['user'] = json_encode($user->findByEmail($_POST['login']));				
 				$user = json_decode($_SESSION['user']);
 				if(md5($_POST['password']) == $user->password )
 				{
@@ -21,7 +21,7 @@
 							(
 								array
 								(
-									"response" => "You are not an admin",
+									"response" => "You are not an admin 11",
 									"code" => 0
 								)
 							);
@@ -134,9 +134,5 @@
 								"code" => 0
 							)
 						);
-		//echo "There are 2 parameter";
 	}
-	//echo json_encode($user->findById(1));
-	//echo json_encode($user->findByEmail('habib.aroua@hotmail.fr'));
-	//echo json_encode($user->findByLogin('HabibAroua'));
 ?>

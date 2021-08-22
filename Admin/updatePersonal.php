@@ -16,7 +16,7 @@
         require_once("Template/js.php");
         ?> 
         <?php
-        require_once("Template/Personel/ModifPersonel.php");
+        require_once("Template/Personel/update.php");
         ?> 
          
         </div>

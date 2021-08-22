@@ -1,78 +1,37 @@
 <?php
 
-include('../App/includes/connect_db.php');
-$req = $bdd->query("SELECT * FROM personnel");
-
  ?>
-<!-- Start Page Content here -->
-            <!-- ============================================================== -->
+<div class="content-page">
+    <div class="content">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-12">
+					<div class="card-box">
+                        <h4 class="mt-0 header-title">List of Personel</h4>
+                        <p class="text-muted font-14 mb-3"></p>
+						<table id="datatable" class="table table-bordered dt-responsive nowrap">
+                            <thead>
+								<tr>
+									<th>first_name</th>
+                                    <th>last_name</th>
+                                    <th>CIN</th>
+                                    <th>email</th>
+                                    <th>login</th>
+                                    <th>password</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+							<tbody>
+							</tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
 
-            <div class="content-page">
-                <div class="content">
-
-                    <!-- Start Content-->
-                    <div class="container-fluid">
-
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card-box">
-                                    <h4 class="mt-0 header-title">List of Personel</h4>
-                                    <p class="text-muted font-14 mb-3">
-                                    </p>
-
-                                    <table id="datatable" class="table table-bordered dt-responsive nowrap">
-                                        <thead>
-                                        <tr>
-                                            <th>first_name</th>
-                                            <th>last_name</th>
-                                            <th>CIN</th>
-                                            <th>email</th>
-                                            <th>login</th>
-                                            <th>password</th>
-                                            <th>Action</th>
-                                           
-
-
-                                        </tr>
-                                        </thead>
-
-
-                                        <tbody>
-                                             <?php while($donnees = $req->fetch()) {?>
-                                        <tr>
-                                            <td><?php echo $donnees['first_name'] ?></td>
-                                            <td><?php echo $donnees['last_name'] ?></td>
-                                            <td><?php echo $donnees['CIN'] ?></td>
-                                            <td><?php echo $donnees['email'] ?></td>
-                                            <td><?php echo $donnees['login'] ?></td>
-                                            <td><?php echo $donnees['password'] ?></td>
-                                            <td>
-												<center>
-                                                    <a href="../App/controller/SuppPersonnel.php?id_personnel=<?php echo $donnees['id_personnel']?>" class="ti-trash"> </a>
-                                                </center>
-
-												<center>
-													
-                                                     <a href="ModifPersonnel.php?id=<?php echo $donnees['id_personnel']?>" class="ti-pencil-alt"> </a>
-												</center>
-											</td>
-                                        </tr>
-                                        <?php } ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
+		</div>
+	</div>
 </div>
-            <!-- Vendor js -->
-        <script src="assets/js/vendor.min.js"></script>
-
-<!-- third party js -->
+<script src="assets/js/vendor.min.js"></script>
 <script src="assets/libs/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/libs/datatables/dataTables.bootstrap4.js"></script>
 <script src="assets/libs/datatables/dataTables.responsive.min.js"></script>
@@ -86,10 +45,5 @@ $req = $bdd->query("SELECT * FROM personnel");
 <script src="assets/libs/datatables/dataTables.select.min.js"></script>
 <script src="assets/libs/pdfmake/pdfmake.min.js"></script>
 <script src="assets/libs/pdfmake/vfs_fonts.js"></script>
-<!-- third party js ends -->
-
-<!-- Datatables init -->
 <script src="assets/js/pages/datatables.init.js"></script>
-
-<!-- App js -->
 <script src="assets/js/app.min.js"></script>

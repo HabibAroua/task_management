@@ -10,20 +10,48 @@
 			$user->setId($_POST['id']);
 			if($user->delete())
 			{
-				echo "Good";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "The deleting of this personal has been successful",
+									"code" => 1
+								)
+							);
 			}
 			else
 			{
-				echo "Bad";
+				echo json_encode
+							(
+								array
+								(
+									"response" => "There is an error of deleting",
+									"code" => 0
+								)
+							);
 			}
 		}
 		else
 		{
-			echo "Error : The parameter is empty";
+			echo json_encode
+							(
+								array
+								(
+									"response" => "The parameter is empty",
+									"code" => 0
+								)
+							);
 		}
 	}
 	else
 	{
-		echo "Error : There is one parameter";
+		echo json_encode
+							(
+								array
+								(
+									"response" => "There is one parameter",
+									"code" => 0
+								)
+							);
 	}
 ?>
