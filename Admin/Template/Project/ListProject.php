@@ -90,18 +90,18 @@
                         success: 
                         function(result)
                         {
-																										alert(result);
+							alert(result);
                             json = JSON.parse(result);
-																												if(json.code == 0)
-																												{
-																													alertify.error(json.response);
-																													e.preventDefault();
-																												}
-																												else
-																												{
-																													alertify.success(json.response);
-																													e.preventDefault();
-																												}
+							if(json.code == 0)
+							{
+								alertify.error(json.response);
+								e.preventDefault();
+							}
+							else
+							{
+								alertify.success(json.response);
+								e.preventDefault();
+							}
                         }
                     }
                 );
@@ -111,6 +111,5 @@
                 alertify.error('You cancelled the deleting');
             }
         );
-								//location.href = "ListProject.php";
     }
 </script>
